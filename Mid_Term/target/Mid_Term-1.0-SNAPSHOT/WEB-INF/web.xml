@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+    <servlet>
+        <description></description>
+        <display-name>LoginServlet</display-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>kz.javaee.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>AdminLServlet</display-name>
+        <servlet-name>AdminLServlet</servlet-name>
+        <servlet-class>kz.javaee.AdminLServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>AdminLServlet</servlet-name>
+        <url-pattern>/AdminLServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>SuperAdminLServlet</display-name>
+        <servlet-name>SuperAdminLServlet</servlet-name>
+        <servlet-class>kz.javaee.SuperAdminLServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>SuperAdminLServlet</servlet-name>
+        <url-pattern>/SuperAdminLServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>ProfileServlet</display-name>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>kz.javaee.ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/ProfileServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>SuperAdServlet</display-name>
+        <servlet-name>SuperAdServlet</servlet-name>
+        <servlet-class>kz.javaee.SuperAdServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SuperAdServlet</servlet-name>
+        <url-pattern>/SuperAdServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>AdminServlet</display-name>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>kz.javaee.AdminServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/AdminServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>LogoutServlet</display-name>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>kz.javaee.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>AdminLTServlet</display-name>
+        <servlet-name>AdminLTServlet</servlet-name>
+        <servlet-class>kz.javaee.AdminLTServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminLTServlet</servlet-name>
+        <url-pattern>/AdminLTServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description></description>
+        <display-name>SuperAdLTServlet</display-name>
+        <servlet-name>SuperAdLTServlet</servlet-name>
+        <servlet-class>kz.javaee.SuperAdLTServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SuperAdLTServlet</servlet-name>
+        <url-pattern>/SuperAdLTServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>filter.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+</web-app>
