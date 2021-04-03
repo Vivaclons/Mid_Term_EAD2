@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DBConnection {
 
-    private String URL = "";
+    private String URL = "jdbc:postgresql://localhost:5432/ForMusic";
 
     private String USERNAME = "postgres";
 

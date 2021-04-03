@@ -57,20 +57,20 @@
 
         .liB{
             display: inline-block;
-            padding-top: 20px;
+            padding-top: 10px;
             margin-left: 60%;
         }
 
         .login{
+            display: inline-block;
             color: #F2F2F2;
-            width: 120px;
             font-size: 13px;
-            height: 30px;
             font-family: Montserrat;
             text-decoration: none;
         }
 
         .sign{
+            display: inline-block;
             color: #F2F2F2;
             text-decoration: none;
             width: 90px;
@@ -320,7 +320,9 @@
     </style>
 </head>
 <body>
-
+<%!
+String name = "";
+%>
     <header>
         <ul>
             <li class="li"><p style="color: #F2F2F2">For<br>Music</p></li>
@@ -329,14 +331,18 @@
             <li class="li2"><a href="index.jsp">About us</a></li>
             <li class="li2"><a href="index.jsp">Support</a></li>
             <li class="liB">
-                <a class="login" href="login.jsp">Login</a>&nbsp;&nbsp;
+                <a class="login" href="user.jsp"><%
+                    name = request.getParameter("name");
+                    out.print(name);
+                    pageContext.setAttribute("user",name,PageContext.SESSION_SCOPE);
+                %></a>&nbsp;&nbsp
                 <a class="sign" href="LogoutServlet">Logout</a>
             </li>
         </ul>
     </header>
 
     <div class="half">
-        <h1 id="lis">Music is ...</h1>
+        <h1 id="lis">Music is life</h1>
         <img alt="image" src="assets/tnbh.jpg">
     </div>
 

@@ -35,8 +35,7 @@ public class LoginServlet extends HttpServlet {
             Cookie ck=new Cookie("name",name);
             response.addCookie(ck);
         }else{
-            out.print("sorry, username or password error!");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            request.getRequestDispatcher("error.jsp").include(request, response);
         }
         out.close();
     }

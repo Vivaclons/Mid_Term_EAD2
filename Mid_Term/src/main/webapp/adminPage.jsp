@@ -58,7 +58,7 @@
         #welToPage{
             font-family: Montserrat;
             color: red;
-            margin-left: 8%;
+            margin-left: 5%;
             font-size: 40px;
             margin-top: 15%;
         }
@@ -170,20 +170,20 @@
 
         .liB{
             display: inline-block;
-            padding-top: 20px;
+            padding-top: 10px;
             margin-left: 60%;
         }
 
         .login{
+            display: inline-block;
             color: #F2F2F2;
-            width: 120px;
             font-size: 13px;
-            height: 30px;
             font-family: Montserrat;
             text-decoration: none;
         }
 
         .sign{
+            display: inline-block;
             color: #F2F2F2;
             text-decoration: none;
             width: 90px;
@@ -210,6 +210,9 @@
     </style>
 </head>
 <body>
+<%!
+    String name = "";
+%>
 <header>
     <ul>
         <li class="li"><p style="color: #F2F2F2">For<br>Music</p></li>
@@ -218,15 +221,20 @@
         <li class="li2"><a href="index.jsp">About us</a></li>
         <li class="li2"><a href="index.jsp">Support</a></li>
         <li class="liB">
-            <a class="login" href="login.jsp">Login</a>&nbsp;&nbsp;
-            <a class="sign" href="AdminLTServlet">Logout</a>
+            <a class="login" href="admin.jsp"><%
+                name = request.getParameter("name");
+                out.print(name);
+            %></a>&nbsp;&nbsp;
+            <a class="sign" href="AdminLTServlet">Logout<%@ page autoFlush = "true" %></a>
         </li>
     </ul>
 </header>
 
 <div class="welcomeAdmin">
     <div class="welAdmin">
-        <p id="welToPage">Welcome to Admin page</p>
+        <p id="welToPage">Welcome to Admin page "<%
+        out.print(name);
+        %>"</p>
         <br><br>
         <img src="assets/IMG_1678.PNG" width="100px" height="100px">
         <img src="assets/IMG_1678.PNG" width="100px" height="100px">

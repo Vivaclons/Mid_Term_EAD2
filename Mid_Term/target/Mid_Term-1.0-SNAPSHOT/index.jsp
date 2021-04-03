@@ -257,7 +257,7 @@
             <li class="li2"><a href="index.jsp">Support</a></li>
             <li class="liB">
                 <a class="login" href="login.jsp">Login</a>&nbsp;&nbsp;
-                <a class="sign" href="LogoutServlet">Logout</a>
+                <a class="sign" href="LogoutServlet">Logout<%@ page autoFlush = "true" %></a>
             </li>
         </ul>
     </header>

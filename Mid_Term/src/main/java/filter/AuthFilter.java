@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static java.util.Objects.nonNull;
-
 public class AuthFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
