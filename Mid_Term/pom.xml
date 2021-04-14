@@ -14,4 +14,12 @@
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>6.3.0</version>
+        </dependency>
+    </dependencies>
+
 </project>

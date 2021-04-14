@@ -21,13 +21,16 @@
 
     <%@ include file = "header.jsp" %>
 
-    <%--String name=(String)session.getAttribute("name");--%>
+    <%!
+    String name = "";
+    %>
+        <%--String name=(String)session.getAttribute("name");--%>
     <%
         String name = (String)pageContext.getAttribute("user",PageContext.SESSION_SCOPE);
 
         if (name != null) {
     %>
-    <p class="name"> Hello <%= name %> </p>
+        <p class="name"> Hello <%= name %> </p>
     <%
     } else {%>
         <jsp:forward page="error.jsp" />

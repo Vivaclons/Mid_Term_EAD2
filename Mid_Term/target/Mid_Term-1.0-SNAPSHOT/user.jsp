@@ -21,6 +21,9 @@
 
     <%@ include file = "header.jsp" %>
 
+    <%!
+    String name = "";
+    %>
     <%--String name=(String)session.getAttribute("name");--%>
     <%
         String name = (String)pageContext.getAttribute("user",PageContext.SESSION_SCOPE);

@@ -9,6 +9,13 @@
 <html>
 <head>
     <title>Admin profile</title>
+    <style>
+        .name{
+            color: red;
+            text-align: center;
+            font-family: Montserrat;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +26,7 @@
         String name=ck[0].getValue();
         if (name != null) {
     %>
-    <p> Hello <%= name %> </p>
+    <p class="name"> Hello <%= name %> </p>
     <%
     } else {
     %>
