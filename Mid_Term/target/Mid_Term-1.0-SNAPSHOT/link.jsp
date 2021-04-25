@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Music" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: vivacloins
   Date: 12.03.2021
@@ -418,40 +419,56 @@ String name = "";
     <h1 style="color: red; text-align: center; font-family: Montserrat">Music list only for you</h1>
     <table>
         <tr>
+            <th>ID</th>
             <th>Music</th>
             <th>Year of publish</th>
             <th>min</th>
         </tr>
+
+        <%
+            Music music = new Music("Delete", 2020, "3:14");
+            Music music1 = new Music("Компас", 2021, "4:14");
+            Music music2 = new Music("Don't let me down", 2020, "2:14");
+            Music music3 = new Music("Thunder", 2020, "3:34");
+            Music music4 = new Music("Plus", 2019, "4:54");
+            ArrayList<Music> musics = new ArrayList<>();
+            musics.add(music);
+            musics.add(music1);
+            musics.add(music2);
+            musics.add(music3);
+            musics.add(music4);
+            for(int i = 0; i < musics.size(); i++){
+        %>
+
         <tr>
-            <td>Delete</td>
-            <td>2020</td>
-            <td>3:14</td>
+            <td><%= i+1 %></td>
+            <td><%= musics.get(i).getName() %></td>
+            <td><%= musics.get(i).getYearOfPublish() %></td>
+            <td><%= musics.get(i).getMin() %></td>
         </tr>
-        <tr>
-            <td>Sweater weather</td>
-            <td>2017</td>
-            <td>2:34</td>
-        </tr>
-        <tr>
-            <td>OMO</td>
-            <td>2020</td>
-            <td>3:58</td>
-        </tr>
-        <tr>
-            <td>Close club</td>
-            <td>2021</td>
-            <td>2:40</td>
-        </tr>
-        <tr>
-            <td>Physical</td>
-            <td>2020</td>
-            <td>3:56</td>
-        </tr>
-        <tr>
-            <td>Circle</td>
-            <td>2020</td>
-            <td>3:01</td>
-        </tr>
+        <%
+            }
+        %>
+
+        <%--//            Connection dbConnection = new Connection();--%>
+        <%--//            dbConnection.doInit();--%>
+        <%--//            ResultSet resultSet = dbConnection.getMusic();--%>
+        <%--//            ArrayList<Music> musics = new ArrayList<>();--%>
+        <%--            try{--%>
+        <%--                while (resultSet.next()) {--%>
+        <%--        %>--%>
+        <%--        <tr>--%>
+        <%--            <td><%= resultSet.getInt("id") %></td>--%>
+        <%--            <td><%= resultSet.getString("name") %></td>--%>
+        <%--            <td><%= resultSet.getInt("yearofpublisher") %></td>--%>
+        <%--            <td><%= resultSet.getString("min") %></td>--%>
+        <%--        </tr>--%>
+        <%--        <%--%>
+        <%--                }--%>
+        <%--            } catch (Exception e) {--%>
+        <%--                    System.out.println(e.getMessage());--%>
+        <%--            }--%>
+        <%--        %>--%>
     </table>
 
     <br>

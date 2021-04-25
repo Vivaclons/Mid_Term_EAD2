@@ -1,17 +1,29 @@
 package model;
 
 public class User {
+    private int iD;
     private String name;
     private String password;
     private String subscribe;
+    private String type;
 
     public User() {
     }
 
-    public User(String name, String password, String subscribe) {
+    public User(int iD, String name, String password, String subscribe, String type) {
+        this.iD = iD;
         this.name = name;
         this.password = password;
         this.subscribe = subscribe;
+        this.type = type;
+    }
+
+    public int getiD() {
+        return iD;
+    }
+
+    public void setiD(int iD) {
+        this.iD = iD;
     }
 
     public String getName() {
@@ -30,7 +42,7 @@ public class User {
         this.password = password;
     }
 
-    public String isSubscribe() {
+    public String getSubscribe() {
         return subscribe;
     }
 
@@ -38,13 +50,22 @@ public class User {
         this.subscribe = subscribe;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", password=" + password +
-                ", subscribe=" + subscribe +
+                "iD=" + iD +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", subscribe='" + subscribe + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
-
 }

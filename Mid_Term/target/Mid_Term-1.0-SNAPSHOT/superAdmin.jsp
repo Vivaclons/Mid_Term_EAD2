@@ -1,4 +1,6 @@
-<%--
+<%@ page import="model.Music" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.User" %><%--
   Created by IntelliJ IDEA.
   User: vivacloins
   Date: 13.03.2021
@@ -255,39 +257,39 @@
     <h1 style="color: red; text-align: center; font-family: Montserrat">Music list only for you</h1>
     <table>
         <tr>
-            <th>Music</th>
-            <th>Year of publish</th>
-            <th>min</th>
+            <th>ID</th>
+            <th>User</th>
+            <th>Password</th>
+            <th>Subscribe</th>
+            <th>Type</th>
         </tr>
+        <%
+            User user = new User(1, "User", "user123", "premium", "user");
+            User user1 = new User(2, "admin", "admin123", "non", "admin");
+            User user2 = new User(2, "Super admin", "super123", "non", "Super admin");
+            User user3 = new User(3, "User1", "user123", "student", "user");
+            User user4 = new User(4, "User2", "user123", "family", "user");
+
+            ArrayList<User> users = new ArrayList<>();
+            users.add(user);
+            users.add(user1);
+            users.add(user2);
+            users.add(user3);
+            users.add(user4);
+
+            for(int i = 0; i < users.size(); i++){
+        %>
+
         <tr>
-            <td>Delete</td>
-            <td>2020</td>
-            <td>3:14</td>
+            <td><%= users.get(i).getiD() %></td>
+            <td><%= users.get(i).getName() %></td>
+            <td><%= users.get(i).getPassword() %></td>
+            <td><%= users.get(i).getSubscribe() %></td>
+            <td><%= users.get(i).getType() %></td>
         </tr>
-        <tr>
-            <td>Sweater weather</td>
-            <td>2017</td>
-            <td>2:34</td>
-        </tr>
-        <tr>
-            <td>OMO</td>
-            <td>2020</td>
-            <td>3:58</td>
-        </tr>
-        <tr>
-            <td>Close club</td>
-            <td>2021</td>
-            <td>2:40</td>
-        </tr>
-        <tr>
-            <td>Physical</td>
-            <td>2020</td>
-            <td>3:56</td>
-        </tr>
-        <tr>
-            <td>Circle</td>
-            <td>2020</td>
-            <td>3:01</td>
+        <%
+            }
+        %>
         </tr>
     </table>
     <br><br>
