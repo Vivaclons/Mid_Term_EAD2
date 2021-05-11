@@ -1,5 +1,7 @@
 <%@ page import="model.Music" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="DBconnection.DBConnection" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: vivacloins
   Date: 13.03.2021
@@ -194,7 +196,7 @@
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: Montserrat;
             border-collapse: collapse;
             width: 100%;
         }
@@ -264,32 +266,68 @@
     </tr>
 
     <%
-        Music music = new Music("Delete", 2020, "3:14");
-        Music music1 = new Music("Компас", 2021, "4:14");
-        Music music2 = new Music("Don't let me down", 2020, "2:14");
-        Music music3 = new Music("Thunder", 2020, "3:34");
-        Music music4 = new Music("Plus", 2019, "4:54");
-        ArrayList<Music> musics = new ArrayList<>();
-        musics.add(music);
-        musics.add(music1);
-        musics.add(music2);
-        musics.add(music3);
-        musics.add(music4);
-
-        for(int i = 0; i < musics.size(); i++){
+        DBConnection dbconnection = new DBConnection();
+        ResultSet resultSet = dbconnection.getMusic();
+        try{
+            while (resultSet.next()) {
     %>
 
     <tr>
-        <td><%= i+1 %></td>
-        <td><%= musics.get(i).getName() %></td>
-        <td><%= musics.get(i).getYearOfPublish() %></td>
-        <td><%= musics.get(i).getMin() %></td>
+        <th><%= resultSet.getInt("id") %></th>
+        <th><%= resultSet.getString("name") %></th>
+        <th><%= resultSet.getInt("yearofpublish") %></th>
+        <th><%= resultSet.getString("min") %></th>
     </tr>
+
     <%
+            }
+        } catch (Exception e){
+            out.print(e.getMessage());
         }
     %>
 </table>
 <br><br>
+
+<div class="delete">
+    <div class="deleteMusic">
+        <form action="MusicDeleteServlet" method="post" align="center">
+            <fieldset>
+                <p style="font-family: Montserrat; text-align: center">Delete</p>
+                <label style="font-family: Montserrat">Music name:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter music name:" name="musicName" id="musicName">
+            </fieldset>
+            <br>
+                <button style="font-family: Montserrat" type="submit" name="action" value="update" class="btn">Delete</button>
+            <br>
+        </form>
+    </div>
+</div>
+
+<div class="add">
+    <div class="addMusic">
+        <form action="MusicAddServlet" method="post" align="center">
+            <fieldset>
+                <p style="font-family: Montserrat; text-align: center">Add</p>
+                <label style="font-family: Montserrat">Music id:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter music id:" name="id" id="id">
+                <br>
+                <label style="font-family: Montserrat">Music name:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter music name:" name="name" id="name">
+                <br>
+                <label style="font-family: Montserrat">Music year of publish:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter music year of publish:" name="year" id="year">
+                <br>
+                <label style="font-family: Montserrat">Music min:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter music min:" name="min" id="min">
+                <br>
+            </fieldset>
+            <br>
+            <button style="font-family: Montserrat" type="submit" name="action" value="update" class="btn">ADD</button>
+            <br>
+        </form>
+    </div>
+</div>
+
 <footer>
     <br><br>
     <ul class="ull">

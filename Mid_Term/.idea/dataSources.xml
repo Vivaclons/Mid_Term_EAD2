@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="EndTerm" uuid="de6c077f-759c-474a-9eb7-9d1e5662de86">
+    <data-source source="LOCAL" name="JavaEE@localhost" uuid="4e682698-76cb-4626-8384-45114cba5b83">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/EndTerm</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/JavaEE</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="atm_db@localhost" uuid="b53cf65c-982e-4a16-8197-4dcad267092c">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/atm_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

@@ -1,6 +1,8 @@
 <%@ page import="model.Music" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.User" %><%--
+<%@ page import="model.User" %>
+<%@ page import="DBconnection.DBConnection" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: vivacloins
   Date: 13.03.2021
@@ -195,7 +197,7 @@
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: Montserrat;
             border-collapse: collapse;
             width: 100%;
         }
@@ -264,34 +266,74 @@
             <th>Type</th>
         </tr>
         <%
-            User user = new User(1, "User", "user123", "premium", "user");
-            User user1 = new User(2, "admin", "admin123", "non", "admin");
-            User user2 = new User(2, "Super admin", "super123", "non", "Super admin");
-            User user3 = new User(3, "User1", "user123", "student", "user");
-            User user4 = new User(4, "User2", "user123", "family", "user");
-
-            ArrayList<User> users = new ArrayList<>();
-            users.add(user);
-            users.add(user1);
-            users.add(user2);
-            users.add(user3);
-            users.add(user4);
-
-            for(int i = 0; i < users.size(); i++){
+            DBConnection dbconnection = new DBConnection();
+            ResultSet resultSet = dbconnection.getUsers();
+            try{
+                while (resultSet.next()) {
         %>
 
         <tr>
-            <td><%= users.get(i).getiD() %></td>
-            <td><%= users.get(i).getName() %></td>
-            <td><%= users.get(i).getPassword() %></td>
-            <td><%= users.get(i).getSubscribe() %></td>
-            <td><%= users.get(i).getType() %></td>
+            <th><%= resultSet.getInt("user_id") %></th>
+            <th><%= resultSet.getString("name") %></th>
+            <th><%= resultSet.getString("pass") %></th>
+            <th><%= resultSet.getString("subs") %></th>
+            <th><%= resultSet.getString("type") %></th>
         </tr>
+
         <%
+                }
+            } catch (Exception e){
+                out.print(e.getMessage());
             }
         %>
         </tr>
     </table>
+
+<br><br>
+
+<div class="delete">
+    <div class="deleteUser">
+        <form action="UserDeleteServlet" method="post" align="center">
+            <fieldset>
+                <p style="font-family: Montserrat; text-align: center">Delete</p>
+                <label style="font-family: Montserrat">User name:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter user name:" name="userName" id="userName">
+            </fieldset>
+            <br>
+            <button style="font-family: Montserrat" type="submit" name="action" value="update" class="btn">Delete</button>
+            <br>
+        </form>
+    </div>
+</div>
+
+<div class="add">
+    <div class="addUser">
+        <form action="UserAddServlet" method="post" align="center">
+            <fieldset>
+                <p style="font-family: Montserrat; text-align: center">Add</p>
+                <label style="font-family: Montserrat">User id:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter user id:" name="id" id="id">
+                <br>
+                <label style="font-family: Montserrat">User name:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter user name:" name="name" id="name">
+                <br>
+                <label style="font-family: Montserrat">Password:</label>
+                <input style="font-family: Montserrat" type="password" class="" placeholder="Enter user password:" name="pass" id="pass">
+                <br>
+                <label style="font-family: Montserrat">Subscribe:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter user subscribe:" name="subs" id="subs">
+                <br>
+                <label style="font-family: Montserrat">Type:</label>
+                <input style="font-family: Montserrat" type="text" class="" placeholder="Enter user type:" name="type" id="type">
+                <br>
+            </fieldset>
+            <br>
+            <button style="font-family: Montserrat" type="submit" name="action" value="update" class="btn">ADD</button>
+            <br>
+        </form>
+    </div>
+</div>
+
     <br><br>
     <footer>
         <br><br>

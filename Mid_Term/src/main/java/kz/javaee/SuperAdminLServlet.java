@@ -1,12 +1,12 @@
 package kz.javaee;
 
+import DBconnection.DBConnection;
+
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 
 public class SuperAdminLServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,16 +17,29 @@ public class SuperAdminLServlet extends HttpServlet {
         String name=request.getParameter("name");
         String password=request.getParameter("password");
 
-        if(password.equals("super123")){
-            request.getRequestDispatcher("superAdmin.jsp").include(request, response);
-            out.print("You are successfully logged in!");
-            out.print("<br>Welcome, "+name);
+        DBConnection dbConnection = new DBConnection();
 
-            Cookie ck=new Cookie("name",name);
-            response.addCookie(ck);
-        }else{
-            out.print("sorry, username or password error!");
-            request.getRequestDispatcher("supAdminLogin.jsp").include(request, response);
+        ResultSet resultSet = dbConnection.getUsers();
+        int a = 0, er = 0;
+
+        try {
+            while (resultSet.next()) {
+                if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("super admin")) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("name", name);
+                    a = 1;
+                } else {
+                    er = 1;
+                }
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        if(a == 1){
+            request.getRequestDispatcher("superAdmin.jsp").include(request, response);
+        } else if(er == 1){
+            request.getRequestDispatcher("errorA.jsp").include(request, response);
         }
 
         out.close();

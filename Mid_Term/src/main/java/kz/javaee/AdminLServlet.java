@@ -1,12 +1,12 @@
 package kz.javaee;
 
+import DBconnection.DBConnection;
+
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 
 public class AdminLServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,17 +17,29 @@ public class AdminLServlet extends HttpServlet {
         String name=request.getParameter("name");
         String password=request.getParameter("password");
 
-        if(password.equals("admin123")){
+        DBConnection dbConnection = new DBConnection();
+
+        ResultSet resultSet = dbConnection.getUsers();
+
+        int a = 0, er = 0;
+        try {
+            while (resultSet.next()) {
+                if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("admin")) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("name", name);
+                    a = 1;
+                } else {
+                    er = 1;
+                }
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        if(a == 1){
             request.getRequestDispatcher("adminPage.jsp").include(request, response);
-
-            out.print("You are successfully logged in!");
-            out.print("<br>Welcome, "+name);
-
-            Cookie ck=new Cookie("name",name);
-            response.addCookie(ck);
-        }else{
-            out.print("sorry, username or password error!");
-            request.getRequestDispatcher("adminLogin.jsp").include(request, response);
+        } else if(er == 1){
+            request.getRequestDispatcher("errorA.jsp").include(request, response);
         }
 
         out.close();

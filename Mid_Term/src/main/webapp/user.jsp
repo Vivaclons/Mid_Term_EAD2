@@ -1,10 +1,10 @@
 <%@ page import="model.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Music" %>
-<%@ page import="kz.javaee.DBConnection" %>
+<%@ page import="DBconnection.DBConnection" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="DBconnection.Connection" %><%--
+<%@ page import="DBconnection.DBConnection" %><%--
   Created by IntelliJ IDEA.
   User: vivacloins
   Date: 02.04.2021
@@ -23,7 +23,7 @@
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: Montserrat;
             border-collapse: collapse;
             width: 100%;
         }
@@ -150,49 +150,23 @@
         </tr>
 
         <%
-            Music music = new Music("Delete", 2020, "3:14");
-            Music music1 = new Music("Компас", 2021, "4:14");
-            Music music2 = new Music("Don't let me down", 2020, "2:14");
-            Music music3 = new Music("Thunder", 2020, "3:34");
-            Music music4 = new Music("Plus", 2019, "4:54");
-            ArrayList<Music> musics = new ArrayList<>();
-            musics.add(music);
-            musics.add(music1);
-            musics.add(music2);
-            musics.add(music3);
-            musics.add(music4);
-            for(int i = 0; i < musics.size(); i++){
+            DBConnection dbConnection = new DBConnection();
+            ResultSet resultSet = dbConnection.getMusic();
+            try{
+                while (resultSet.next()) {
         %>
-
         <tr>
-            <td><%= i+1 %></td>
-            <td><%= musics.get(i).getName() %></td>
-            <td><%= musics.get(i).getYearOfPublish() %></td>
-            <td><%= musics.get(i).getMin() %></td>
+            <td><%= resultSet.getInt("id") %></td>
+            <td><%= resultSet.getString("name") %></td>
+            <td><%= resultSet.getInt("yearofpublish") %></td>
+            <td><%= resultSet.getString("min") %></td>
         </tr>
         <%
+                }
+            } catch (Exception e) {
+                    System.out.println(e.getMessage());
             }
         %>
-
-<%--//            Connection dbConnection = new Connection();--%>
-<%--//            dbConnection.doInit();--%>
-<%--//            ResultSet resultSet = dbConnection.getMusic();--%>
-<%--//            ArrayList<Music> musics = new ArrayList<>();--%>
-<%--            try{--%>
-<%--                while (resultSet.next()) {--%>
-<%--        %>--%>
-<%--        <tr>--%>
-<%--            <td><%= resultSet.getInt("id") %></td>--%>
-<%--            <td><%= resultSet.getString("name") %></td>--%>
-<%--            <td><%= resultSet.getInt("yearofpublisher") %></td>--%>
-<%--            <td><%= resultSet.getString("min") %></td>--%>
-<%--        </tr>--%>
-<%--        <%--%>
-<%--                }--%>
-<%--            } catch (Exception e) {--%>
-<%--                    System.out.println(e.getMessage());--%>
-<%--            }--%>
-<%--        %>--%>
     </table>
 
     <%@ include file = "footer.jsp" %>
