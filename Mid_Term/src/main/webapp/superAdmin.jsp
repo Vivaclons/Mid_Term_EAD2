@@ -273,10 +273,10 @@
         %>
 
         <tr>
-            <th><%= resultSet.getInt("user_id") %></th>
+            <th><%= resultSet.getInt("id") %></th>
             <th><%= resultSet.getString("name") %></th>
-            <th><%= resultSet.getString("pass") %></th>
-            <th><%= resultSet.getString("subs") %></th>
+            <th><%= resultSet.getString("password") %></th>
+            <th><%= resultSet.getString("subscribe") %></th>
             <th><%= resultSet.getString("type") %></th>
         </tr>
 
@@ -335,18 +335,21 @@
 </div>
 
     <br><br>
-    <footer>
-        <br><br>
-        <ul class="ull">
-            <li class="fo2"><a href="index.jsp">Home</a></li>
-            <li class="fo2"><a href="ProfileServlet">Music</a></li>
-            <li class="fo2"><a href="index.jsp">About us</a></li>
-            <li class="fo"><p style="color: white">For<br>Music</p></li>
-            <li class="fo1"><a href="index.jsp">Support</a></li>
-            <li class="fo1"><a href="adminLogin.jsp">Admin</a></li>
-            <li class="fo1"><a href="SuperAdServlet">Super Admin</a></li>
-            <br><br>
-        </ul>
-    </footer>
+<%--    <footer>--%>
+<%--        <br><br>--%>
+<%--        <ul class="ull">--%>
+<%--            <li class="fo2"><a href="index.jsp">Home</a></li>--%>
+<%--            <li class="fo2"><a href="ProfileServlet">Music</a></li>--%>
+<%--            <li class="fo2"><a href="index.jsp">About us</a></li>--%>
+<%--            <li class="fo"><p style="color: white">For<br>Music</p></li>--%>
+<%--            <li class="fo1"><a href="index.jsp">Support</a></li>--%>
+<%--            <li class="fo1"><a href="adminLogin.jsp">Admin</a></li>--%>
+<%--            <li class="fo1"><a href="SuperAdServlet">Super Admin</a></li>--%>
+<%--            <br><br>--%>
+<%--        </ul>--%>
+<%--    </footer>--%>
+
+<jsp:include page="footer.jsp" />
+
 </body>
 </html>

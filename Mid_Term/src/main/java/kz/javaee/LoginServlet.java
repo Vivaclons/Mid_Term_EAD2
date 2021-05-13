@@ -25,15 +25,15 @@ public class LoginServlet extends HttpServlet {
 
         try{
             while (resultSet.next()) {
-                if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("user")) {
+                if (resultSet.getString("password").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("user")) {
                     HttpSession session=request.getSession();
                     session.setAttribute("name",name);
                     u = 1;
-                } else if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("admin")) {
+                } else if (resultSet.getString("password").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("admin")) {
                     HttpSession session=request.getSession();
                     session.setAttribute("name",name);
                     a = 2;
-                } else if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("super admin")) {
+                } else if (resultSet.getString("password").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("super admin")) {
                     HttpSession session=request.getSession();
                     session.setAttribute("name",name);
                     s = 3;

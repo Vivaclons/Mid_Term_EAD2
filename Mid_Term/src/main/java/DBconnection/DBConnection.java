@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DBConnection {
-    private String URL = "jdbc:postgresql://localhost:5432/JavaEE";
+    private String URL = "jdbc:postgresql://localhost:5432/EE";
     private String USERNAME = "postgres";
     private String PASSWORD = "1234";
 

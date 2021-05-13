@@ -452,18 +452,21 @@ String name = "";
 
     <br>
 
-    <footer>
-        <br><br>
-        <ul class="ull">
-            <li class="fo2"><a href="index.jsp">Home</a></li>
-            <li class="fo2"><a href="ProfileServlet">Music</a></li>
-            <li class="fo2"><a href="">About us</a></li>
-            <li class="fo"><p style="color: white">For<br>Music</p></li>
-            <li class="fo1"><a href="">Support</a></li>
-            <li class="fo1"><a href="">Admin</a></li>
-            <li class="fo1"><a href="">Super Admin</a></li>
-            <br><br>
-        </ul>
-    </footer>
+<%--    <footer>--%>
+<%--        <br><br>--%>
+<%--        <ul class="ull">--%>
+<%--            <li class="fo2"><a href="index.jsp">Home</a></li>--%>
+<%--            <li class="fo2"><a href="ProfileServlet">Music</a></li>--%>
+<%--            <li class="fo2"><a href="index.jsp">About us</a></li>--%>
+<%--            <li class="fo"><p style="color: white">For<br>Music</p></li>--%>
+<%--            <li class="fo1"><a href="index.jsp">Support</a></li>--%>
+<%--            <li class="fo1"><a href="adminLogin.jsp">Admin</a></li>--%>
+<%--            <li class="fo1"><a href="supAdminLogin.jsp">Super Admin</a></li>--%>
+<%--            <br><br>--%>
+<%--        </ul>--%>
+<%--    </footer>--%>
+
+<jsp:include page="footer.jsp" />
+
 </body>
 </html>

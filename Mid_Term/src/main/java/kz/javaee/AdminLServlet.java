@@ -24,7 +24,7 @@ public class AdminLServlet extends HttpServlet {
         int a = 0, er = 0;
         try {
             while (resultSet.next()) {
-                if (resultSet.getString("pass").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("admin")) {
+                if (resultSet.getString("password").equals(password) && resultSet.getString("name").equals(name) && resultSet.getString("type").equals("admin")) {
                     HttpSession session = request.getSession();
                     session.setAttribute("name", name);
                     a = 1;
